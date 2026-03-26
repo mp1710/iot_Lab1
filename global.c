@@ -3,33 +3,43 @@
 #include <stdbool.h>
 #include "global.h"
 
+root_t eq_solver(coeff_t *coeficientes) {
+    double a = coeficientes->a;
+    double b = coeficientes->b;
+    double c = coeficientes->c;
 
-void eq_solver(coeff_t coeff, root_t *roots) {
-    double a = coeff.a;
-    double b = coeff.b;
-    double c = coeff.c;
-    
     double discriminante = b * b - 4 * a * c;
-    
+    root_t result;
+
     if (discriminante > 0) {
-        roots->real1 = (-b + sqrt(discriminante)) / (2 * a);
-        roots->imag1 = 0;
-        roots->real2 = (-b - sqrt(discriminante)) / (2 * a);
-        roots->imag2 = 0;
-        roots->complex = false;
+        result.real1 = (-b + sqrt(discriminante)) / (2 * a);
+        result.imag1 = 0;
+        result.real2 = (-b - sqrt(discriminante)) / (2 * a);
+        result.imag2 = 0;
+        result.complex = false;
     } else if (discriminante == 0) {
-        roots->real1 = -b / (2 * a);
-        roots->imag1 = 0;
-        roots->real2 = -b / (2 * a);
-        roots->imag2 = 0;
-        roots->complex = false;
+        result.real1 = -b / (2 * a);
+        result.imag1 = 0;
+        result.real2 = -b / (2 * a);
+        result.imag2 = 0;
+        result.complex = false;
     } else {
-        roots->real1 = -b / (2 * a);
-        roots->imag1 = sqrt(-discriminante) / (2 * a);
-        roots->real2 = -b / (2 * a);
-        roots->imag2 = -sqrt(-discriminante) / (2 * a);
-        roots->complex = true;
+        result.real1 = -b / (2 * a);
+        result.imag1 = sqrt(-discriminante) / (2 * a);
+        result.real2 = -b / (2 * a);
+        result.imag2 = -sqrt(-discriminante) / (2 * a);
+        result.complex = true;
     }
-    return *roots;
+    return result;
+}
+
+void string_copy(char *source, char *destination) {
+    while (*source) {
+        *destination = *source;
+        source++;
+        destination++;
+    }
+    *destination = '\0'; // Agregar el carácter nulo al final de la cadena
+    
 }
 
