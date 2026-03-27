@@ -32,10 +32,20 @@ int consonantes(char *string) {
 }
 
 //Convertir string a mayúsculas
-void convertir_a_mayusculas(char *string) {
+void string_to_caps(char *string) {
     for (size_t i = 0; string[i] != '\0'; i++) {
         if (string[i] >= 'a' && string[i] <= 'z') {
             string[i] = string[i] - 32;
+        }
+    }
+
+}
+
+//Convertir string a minúsculas
+void string_to_min(char *string) {
+    for (size_t i = 0; string[i] != '\0'; i++) {
+        if (string[i] >= 'A' && string[i] <= 'Z') {
+            string[i] = string[i] + 32;
         }
     }
 
