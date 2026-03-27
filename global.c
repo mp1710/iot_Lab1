@@ -30,3 +30,14 @@ int consonantes(char *string) {
     }
     return num_consonantes;
 }
+
+//Convertir string a mayúsculas
+void convertir_a_mayusculas(char *string) {
+    for (size_t i = 0; string[i] != '\0'; i++) {
+        if (string[i] >= 'a' && string[i] <= 'z') {
+            string[i] = string[i] - 32;
+        }
+    }
+
+}
+
