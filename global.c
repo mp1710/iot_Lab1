@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -196,4 +197,54 @@ int days_left(date_t start, date_t finish) {
     }
 
     return days;
+}
+
+// Número de vocales en una cadena
+int vocales(char *string) {
+    int num_vocales = 0;
+    char *p = string; // Puntero para recorrer la cadena
+    while (*p != '\0') {
+        if (*p == 'a' || *p == 'e' || *p == 'i' || *p == 'o' || *p == 'u' ||
+            *p == 'A' || *p == 'E' || *p == 'I' || *p == 'O' || *p == 'U') {
+            num_vocales++;
+        }
+        p++;
+    }
+    return num_vocales;
+}
+
+// Número de consonantes en una cadena
+int consonantes(char *string) {
+    int num_consonantes = 0;
+    char *p = string; // Puntero para recorrer la cadena
+    while (*p != '\0') {
+        if ((*p >= 'a' && *p <= 'z') || (*p >= 'A' && *p <= 'Z')) { // Mientras que el string sean letras, no símbolos
+            if (*p != 'a' && *p != 'e' && *p != 'i' && *p != 'o' && *p != 'u' &&
+                *p != 'A' && *p != 'E' && *p != 'I' && *p != 'O' && *p != 'U') {
+                num_consonantes++;
+            }
+        }
+        p++;
+    }
+    return num_consonantes;
+}
+
+//Convertir string a mayúsculas
+void string_to_caps(char *string) {
+    for (size_t i = 0; string[i] != '\0'; i++) {
+        if (string[i] >= 'a' && string[i] <= 'z') { // Si el string es una letra minúscula resta 32
+            string[i] = string[i] - 32;      // Las letras son código ascii, representan un número, 32 representa el número de
+        }                                       // la distancia entre una letra minúscula y su respectiva letra mayúscula
+    }
+    printf("String en mayúsculas: %s\n", string);
+}
+
+//Convertir string a minúsculas
+void string_to_min(char *string) {
+    for (size_t i = 0; string[i] != '\0'; i++) {
+        if (string[i] >= 'A' && string[i] <= 'Z') { // Si el string es una letra mayúscula suma 32
+            string[i] = string[i] + 32;
+        }
+    }
+    printf("String en minúsculas: %s\n", string);
 }
