@@ -38,7 +38,7 @@ void string_to_caps(char *string) {
             string[i] = string[i] - 32;
         }
     }
-
+    printf("String en mayúsculas: %s\n", string);
 }
 
 //Convertir string a minúsculas
@@ -48,6 +48,6 @@ void string_to_min(char *string) {
             string[i] = string[i] + 32;
         }
     }
-
+    printf("String en minúsculas: %s\n", string);
 }
 
