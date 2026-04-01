@@ -35,7 +35,7 @@ estudiante_t* buscar_estudiante_apellido(nodo_t *cabeza, const char *apellido);
 //buscar_estudiante_ci
 estudiante_t* buscar_estudiante_ci(nodo_t *cabeza, uint32_t ci);
 //calcular_calificacion
-float calcular_calificacion(estudiante_t estudiante);
+float calificacion(estudiante_t estudiante);
 //liberar_lista
 void liberar_lista(nodo_t **cabeza);
 
