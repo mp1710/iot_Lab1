@@ -2,6 +2,7 @@
 #define GLOBAL_H
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 // Definir variables globales y constantes
  
@@ -32,9 +33,26 @@ typedef struct {
 } date_t;
 
 typedef struct {
-    int16_t data; //puntero a la matriz de valores
+    int16_t ** data; //puntero a la matriz de valores
     size_t rows; // numero de filas
     size_t cols; // numero de columnas
 } matriz_t;
 
+// Declarar funciones globales
+
+void init_lab(void);
+
+root_t *eq_solver(coeff_t *coeficientes);
+
+int string_copy(char *source, char *destination);
+
+void max_index(void *array, size_t data_type, size_t array_size);
+
+void min_index(void *array, size_t data_type, size_t array_size);
+
+int swap(void *elem_1, void *elem_2, size_t data_type);
+
+void print_reverse_array(void *array, size_t data_type, size_t array_size);
+
+int days_left(date_t start, date_t finish);
 #endif // GLOBAL_H
