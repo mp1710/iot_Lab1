@@ -34,7 +34,7 @@ int main(void) {
 
 // FUNCION 4
     printf("Test max_index:\n");
-    int32_t arr_int[] = {1, 3, 5, 2, 4}; // ARREGLAR ESTA FUNCION TIRA Q EL INDICE MAX ES 2
+    int32_t arr_int[] = {1, 3, 5, 2, 4};
     size_t size_int = sizeof(arr_int) / sizeof(arr_int[0]);
     max_index(arr_int, sizeof(int32_t), size_int);
     printf("\n");
