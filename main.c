@@ -67,6 +67,14 @@ int main(void) {
 // FUNCIÓN 7
     char str[] = "Hola, buenas tardes";
     print_reverse_string(str, sizeof(char), strlen(str));
+
+// FALTA DAYS_LEFT
+
+// FUNCIÓN 9
+    // Usar una cadena de ejemplo en lugar de leerla desde la entrada estándar
+    char string[] = "Ejemplo para contar vocales";
+    int num_vocales = vocales(string);
+    printf("Número de vocales en la cadena: %d\n", num_vocales);
     
     return 0;
 }
