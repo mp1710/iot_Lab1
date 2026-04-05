@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include "global.h"
 
 int main(void) {
 
-// FUNCION 1
+// FUNCIÓN 1
     printf("Testing init_lab:\n");
     init_lab();
     printf("\n");
-// FUNCION 2
+// FUNCIÓN 2
     printf("Testing eq_solver:\n");
     // Creo coeficientes para la ecuacion x^2 - 5x + 6 = 0, que tiene raices reales y distintas (2 y 3)
     coeff_t coef = {1, -5, 6};
@@ -23,7 +24,7 @@ int main(void) {
         free(result);
         printf("\n");
     }
-// FUNCION 3
+// FUNCIÓN 3
     printf("Testing string_copy:\n");
     char source[] = "Prueba de string copy";
     char destination[20];
@@ -32,12 +33,24 @@ int main(void) {
     printf("Destination: %s\n", destination);
     printf("\n");
 
-// FUNCION 4
+// FUNCIÓN 4
     printf("Testing max_index:\n");
     int32_t arr_int[] = {1, 3, 5, 2, 4};
     size_t size_int = sizeof(arr_int) / sizeof(arr_int[0]);
     max_index(arr_int, sizeof(int32_t), size_int);
     printf("\n");
+
+// FUNCIÓN 5
+    printf("Testing min_index:\n");
+    int32_t arr_int[] = {5, 1, 9, 2, 5};
+    float arr_float[] = {3.5, 2.1, 4.6, 1.1, 3.3};
+    double arr_double[] = {2.5, 1.2, 3.8, 2.7, 0.9};
+    printf("Para array de enteros:\n");
+    min_index(arr_int, sizeof(int32_t), sizeof(arr_int) / sizeof(arr_int[0]));
+    printf("Para array de floats:\n");
+    min_index(arr_float, sizeof(float), sizeof(arr_float) / sizeof(arr_float[0]));
+    printf("Para array de doubles:\n");
+    min_index(arr_double, sizeof(double), sizeof(arr_double) / sizeof(arr_double[0]));
     
     return 0;
 }
