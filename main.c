@@ -52,7 +52,7 @@ int main(void) {
     printf("Para array de doubles:\n");
     min_index(arr_double, sizeof(double), sizeof(arr_double) / sizeof(arr_double[0]));
 
-//FUNCIÓN 6
+// FUNCIÓN 6
     printf("Testing swap:\n");
     int32_t a = 5, b = 10;
     swap(&a, &b, sizeof(int32_t));
@@ -63,6 +63,10 @@ int main(void) {
     double m = 3.14, n = 2.71;
     swap(&m, &n, sizeof(double));
     printf("Después del swap: m = %.2lf, n = %.2lf\n", m, n);
+
+// FUNCIÓN 7
+    char str[] = "Hola, buenas tardes";
+    print_reverse_string(str, sizeof(char), strlen(str));
     
     return 0;
 }
