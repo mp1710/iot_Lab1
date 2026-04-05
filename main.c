@@ -51,6 +51,18 @@ int main(void) {
     min_index(arr_float, sizeof(float), sizeof(arr_float) / sizeof(arr_float[0]));
     printf("Para array de doubles:\n");
     min_index(arr_double, sizeof(double), sizeof(arr_double) / sizeof(arr_double[0]));
+
+//FUNCIÓN 6
+    printf("Testing swap:\n");
+    int32_t a = 5, b = 10;
+    swap(&a, &b, sizeof(int32_t));
+    printf("Después del swap: a = %d, b = %d\n", a, b);
+    float x = 1.5f, y = 2.5f;
+    swap(&x, &y, sizeof(float));
+    printf("Después del swap: x = %.2f, y = %.2f\n", x, y);
+    double m = 3.14, n = 2.71;
+    swap(&m, &n, sizeof(double));
+    printf("Después del swap: m = %.2lf, n = %.2lf\n", m, n);
     
     return 0;
 }
