@@ -141,7 +141,7 @@ void min_index(void *array,size_t data_type,size_t array_size) {
 
 int swap(void *elem_1, void *elem_2, size_t data_type) {
     if (data_type == sizeof(int32_t)) {
-        int32_t aux = *(int32_t *)elem_2;
+        int32_t aux = *(int32_t *)elem_1;
         *(int32_t *)elem_1 = *(int32_t *)elem_2;
         *(int32_t *)elem_2 = aux;
         return 0;
