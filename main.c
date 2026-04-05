@@ -42,15 +42,16 @@ int main(void) {
 
 // FUNCIÓN 5 min_index
     printf("Testing min_index:\n");
-    int32_t arr_int[] = {5, 1, 9, 2, 5};
+    int32_t arr_int1[] = {5, 1, 9, 2, 5};
     float arr_float[] = {3.5, 2.1, 4.6, 1.1, 3.3};
     double arr_double[] = {2.5, 1.2, 3.8, 2.7, 0.9};
     printf("Para array de enteros:\n");
-    min_index(arr_int, sizeof(int32_t), sizeof(arr_int) / sizeof(arr_int[0]));
+    min_index(arr_int1, sizeof(int32_t), sizeof(arr_int1) / sizeof(arr_int1[0]));
     printf("Para array de floats:\n");
     min_index(arr_float, sizeof(float), sizeof(arr_float) / sizeof(arr_float[0]));
     printf("Para array de doubles:\n");
     min_index(arr_double, sizeof(double), sizeof(arr_double) / sizeof(arr_double[0]));
+    printf("\n");
 
 // FUNCIÓN 6 swap
     printf("Testing swap:\n");
@@ -63,11 +64,13 @@ int main(void) {
     double m = 3.14, n = 2.71;
     swap(&m, &n, sizeof(double));
     printf("Después del swap: m = %.2lf, n = %.2lf\n", m, n);
+    printf("\n");
 
 // FUNCIÓN 7 print_reverse_string
     printf("Testing print_reverse_string:\n");
     char str[] = "Hola, buenas tardes";
     print_reverse_string(str, sizeof(char), strlen(str));
+    printf("\n");
     
     
 
@@ -80,17 +83,20 @@ int main(void) {
     char string[] = "Ejemplo para contar vocales";
     int num_vocales = vocales(string);
     printf("Número de vocales en la cadena: %d\n", num_vocales);
+    printf("\n");
 
 // FUNCIÓN 10 consonantes
     printf("Testing consonantes:\n");
-    char string[] = "Ejemplo para contar consonantes";
-    int num_consonantes = consonantes(string);
+    char string1[] = "Ejemplo para contar consonantes";
+    int num_consonantes = consonantes(string1);
     printf("Número de consonantes en la cadena: %d\n", num_consonantes);
+    printf("\n");
 
 // FUNCIÓN 11 string_to_caps
     printf("Testing string_to_caps:\n");
-    char string[] = "Convertir a mayusculas";
-    string_to_caps(string);
+    char string2[] = "Convertir a mayusculas";
+    string_to_caps(string2);
+    printf("\n");
 
     return 0;
 }
