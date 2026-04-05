@@ -94,9 +94,15 @@ int main(void) {
 
 // FUNCIÓN 11 string_to_caps
     printf("Testing string_to_caps:\n");
-    char string2[] = "Convertir a mayusculas";
+    char string2[] = "ConVErtir a mayuSculAs";
     string_to_caps(string2);
     printf("\n");
 
+// FUNCIÓN 12 string_to_min
+    printf("Testing string_to_min:\n");
+    char string[] = "CONveRtir a miNUscUlAS";
+    string_to_min(string);
+    printf("\n");
+        
     return 0;
 }
