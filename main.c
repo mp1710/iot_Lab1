@@ -86,6 +86,11 @@ int main(void) {
     char string[] = "Ejemplo para contar consonantes";
     int num_consonantes = consonantes(string);
     printf("Número de consonantes en la cadena: %d\n", num_consonantes);
-    
+
+// FUNCIÓN 11 string_to_caps
+    printf("Testing string_to_caps:\n");
+    char string[] = "Convertir a mayusculas";
+    string_to_caps(string);
+
     return 0;
 }
