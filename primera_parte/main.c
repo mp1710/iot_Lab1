@@ -60,7 +60,7 @@ int main(void) {
     min_index(arr_double, sizeof(double), sizeof(arr_double) / sizeof(arr_double[0]));
     printf("\n");
 
-//FUNCIÓN 7 matriz_sub
+//FUNCIÓN 7 matrix_sub
     printf("Testing matrix_sub:\n");
     matriz_t A, B;
     A.rows = 2;
