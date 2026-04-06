@@ -41,14 +41,14 @@ int main(void) {
     print_reverse_array(str, sizeof(char), strlen(str));
     printf("\n");
 
-// FUNCIÓN 4 max_index
+// FUNCIÓN 5 max_index
     printf("Testing max_index:\n");
     int32_t arr_int[] = {1, 3, 5, 2, 4};
     size_t size_int = sizeof(arr_int) / sizeof(arr_int[0]);
     max_index(arr_int, sizeof(int32_t), size_int);
     printf("\n");
 
-// FUNCIÓN 5 min_index
+// FUNCIÓN 6 min_index
     printf("Testing min_index:\n");
     int32_t arr_int1[] = {5, 1, 9, 2, 5};
     float arr_float[] = {3.5, 2.1, 4.6, 1.1, 3.3};
@@ -61,7 +61,7 @@ int main(void) {
     min_index(arr_double, sizeof(double), sizeof(arr_double) / sizeof(arr_double[0]));
     printf("\n");
 
-//FUNCIÓN 6 matriz_sub
+//FUNCIÓN 7 matriz_sub
     printf("Testing matrix_sub:\n");
     matriz_t A, B;
     A.rows = 2;
@@ -109,7 +109,7 @@ int main(void) {
     free(B.data);
     printf("\n");
 
-// FUNCIÓN 7 swap
+// FUNCIÓN 8 swap
     printf("Testing swap:\n");
     int32_t a = 5, b = 10;
     swap(&a, &b, sizeof(int32_t));
@@ -122,21 +122,21 @@ int main(void) {
     printf("Después del swap: m = %.2lf, n = %.2lf\n", m, n);
     printf("\n");
 
-// FUNCION 8 consonantes
+// FUNCIÓN 9 consonantes
     printf("Testing consonantes:\n");
     char string1[] = "Contar consonantes en la cadena de LABORATORIO 1";
     int num_consonantes = consonantes(string1);
     printf("Número de consonantes en la cadena: %d\n", num_consonantes);
     printf("\n");
     
-// FUNCION 9 vocales
+// FUNCIÓN 10 vocales
     printf("Testing vocales:\n");
     char string_vocales[] = "Contar vocales en la cadena de LABORATORIO 1";
     int num_vocales = vocales(string_vocales);
     printf("Número de vocales en la cadena: %d\n", num_vocales);
     printf("\n");
     
-// FUNCION 10 reverse_string
+// FUNCIÓN 11 reverse_string
     printf("Testing reverse_string:\n");
     char str1[] = "Imprimir esta cadenena al revés!";
     char *reversed = reverse_string(str1);
@@ -149,7 +149,7 @@ int main(void) {
     }
     printf("\n");    
 
-// FUNCION 11 string_length
+// FUNCIÓN 12 string_length
     printf("Testing string_length:\n");
     char str2[] = "Cual sera la longitud de esta cadena?";
     int32_t length = string_length(str2);
@@ -160,7 +160,7 @@ int main(void) {
     }
     printf("\n");
     
-// FUNCION 12 string_words
+// FUNCIÓN 13 string_words
     printf("Testing string_words:\n");
     char str3[] = "Cuantas palabras habra en esta cadena de texto?";
     int32_t words = string_words(str3);
@@ -171,7 +171,7 @@ int main(void) {
     }
     printf("\n");
 
-// FUNCIÓN 13 string_copy
+// FUNCIÓN 14 string_copy
     printf("Testing string_copy:\n");
     char source[] = "Probando copiar esta cadena en LABORATORIO 1";
     char destination[64];
@@ -180,7 +180,7 @@ int main(void) {
     printf("Destination: %s\n", destination);
     printf("\n");
 
-// FUNCION 14 find_in_string
+// FUNCIÓN 15 find_in_string
     printf("Testing find_in_string:\n");
     char haystack[] = "Buscar esta subcadena secreta en la cadena principal";
     char needle[] = "secreta";
@@ -192,19 +192,19 @@ int main(void) {
     }
     printf("\n");
 
-// FUNCIÓN 15 string_to_caps
+// FUNCIÓN 16 string_to_caps
     printf("Testing string_to_caps:\n");
     char string2[] = "ConVErtir a mayuSculAs";
     string_to_caps(string2);
     printf("\n");
 
-// FUNCIÓN 12 string_to_min
+// FUNCIÓN 17 string_to_min
     printf("Testing string_to_min:\n");
     char string_min[] = "CONveRtir a miNUscUlAS";
     string_to_min(string_min);
     printf("\n");
  
-// FUNCION 18 sum
+// FUNCIÓN 18 sum
     printf("Testing sum:\n");
     complex_t complex_a = {2, 3}; // 2 + 3i
     complex_t complex_b = {4, 5}; // 4 + 5i
@@ -217,7 +217,7 @@ int main(void) {
     }
     printf("\n");
     
-// FUNCION 19 prod
+// FUNCIÓN 19 prod
     printf("Testing prod:\n");
     complex_t *result_prod = prod(complex_a, complex_b);
     if (result_prod != NULL) {
@@ -228,7 +228,7 @@ int main(void) {
     }
     printf("\n");
 
-// FUNCION 20 days_left
+// FUNCIÓN 20 days_left
     printf("Testing days_left:\n");
     date_t start = {1, 1, 2024}; // 1 de enero de 2024
     date_t finish = {31, 12, 2024}; // 31 de diciembre de 2024
