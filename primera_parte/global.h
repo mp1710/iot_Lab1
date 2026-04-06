@@ -38,66 +38,66 @@ typedef struct {
     size_t cols; // numero de columnas
 } matriz_t;
 
-// Declaracion de funciones 
+// Declaración de funciones 
 
-//FUNCION 1
+//FUNCIÓN 1
 void init_lab(void);
 
-//FUNCION 2
+//FUNCIÓN 2
 root_t *eq_solver(coeff_t *coeficientes);
 
-//FUNCION 3
+//FUNCIÓN 3
 int32_t bin2dec(char *binary, bool sign);
 
-//FUNCION 4
+//FUNCIÓN 4
 void print_reverse_array(void *array, size_t data_type, size_t array_size);
 
-//FUNCION 5 
+//FUNCIÓN 5 
 void max_index(void *array, size_t data_type, size_t array_size);
 
-//FUNCION 6
+//FUNCIÓN 6
 void min_index(void *array, size_t data_type, size_t array_size);
 
-//FUNCION 7
+//FUNCIÓN 7
 matriz_t* matrix_sub(matriz_t A, matriz_t B);
 
-//FUNCION 8
+//FUNCIÓN 8
 int swap(void *elem_1, void *elem_2, size_t data_type);
 
-//FUNCION 9
+//FUNCIÓN 9
 int consonantes(char *string);
 
-//FUNCION 10
+//FUNCIÓN 10
 int vocales(char *string);
 
-//FUNCION 11
+//FUNCIÓN 11
 char* reverse_string(char *string);
 
-//FUNCION 12
+//FUNCIÓN 12
 int32_t string_length(char *string);
 
-//FUNCION 13
+//FUNCIÓN 13
 int32_t string_words(char *string);
 
-//FUNCION 14
+//FUNCIÓN 14
 int string_copy(char *source, char *destination);
 
-//FUNCION 15
+//FUNCIÓN 15
 int find_in_string(char *haystack, char *needle);
 
-//FUNCION 16
+//FUNCIÓN 16
 void string_to_caps(char *string);
 
-//FUNCION 17
+//FUNCIÓN 17
 void string_to_min(char *string);
 
-//FUNCION 18
+//FUNCIÓN 18
 complex_t* sum(complex_t a, complex_t b);
 
-//FUNCION 19
+//FUNCIÓN 19
 complex_t* prod(complex_t a, complex_t b);
 
-//FUNCION 20
+//FUNCIÓN 20
 int days_left(date_t start, date_t finish);
 
 
