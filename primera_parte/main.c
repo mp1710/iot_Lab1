@@ -23,7 +23,6 @@ int main(void) {
         printf("Root 1: %d + %di\n", result->real1, result->imag1);
         printf("Root 2: %d + %di\n", result->real2, result->imag2);
         printf("Complex: %s\n", result->complex ? "true" : "false");
-
         free(result);
         printf("\n");
     }
@@ -72,7 +71,6 @@ int main(void) {
     }
     A.data[0][0] = 1; A.data[0][1] = 2;
     A.data[1][0] = 3; A.data[1][1] = 4;
-
     B.rows = 2;
     B.cols = 2;
     B.data = malloc(B.rows * sizeof(int16_t *));
