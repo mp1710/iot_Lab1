@@ -22,3 +22,4 @@ int main() {
         estudiante_t *estudiante = cabeza; // Tomamos el primer estudiante para la calificación
         calificacion(estudiante);
     return 0;
+}
