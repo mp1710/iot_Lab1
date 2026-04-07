@@ -1,63 +1,69 @@
 #include "estudiantes.h"
-#include <stdlib.h>     // Incluye librerías y el archivo estudiantes.h que contiene la estructura de estudiante_t y
-#include <string.h>        // contiene las funciones que se utilizarán
+#include <stdlib.h>    
+#include <string.h>        
 
-// Función 1 para agregar un estudiante
-void agregar_estudiante(estudiante_t **cabeza,   // Utiliza doble puntero para poder modificar la cabeza de la lista
+// Función 1: Crea memoria dinámica para agregar un estudiante, carga su nombre, apellido, ci, grado y promedio.
+              // Verfifica que no exista otro estudiante con el mismo ci y en tal caso imprime "Estudiante con CI X ya existe".
+              // Además, actualiza la cabeza de la lista, que pasa a ser el nuevo estudiante agregado
+// Parámetros: Utiliza doble puntero para poder modificar la cabeza de la lista. Recibe la dirección del inicio de la lista, nombre del 
+// estudiante como char de hasta 64 caracteres, apellido de igual tipo, ci de tipo entero sin signo de 32 bits, grado de tipo entero, y 
+// promedio de tipo float
+// La función no devuelve nada por ser de tipo void
+void agregar_estudiante(estudiante_t **cabeza,   
                         char nombre[64],      
                         char apellido[64],
                         uint32_t ci,
                         int grado,
                         float promedio) {
 
-    // Crear nodo 
-    estudiante_t *nuevo = malloc(sizeof(estudiante_t)); // Reserva memoria para un nuevo nodo y crea un estudainte dinámicamente
-    if (nuevo == NULL) return;    // Si falla la memoria, sale
+    estudiante_t *nuevo = malloc(sizeof(estudiante_t)); 
+    if (nuevo == NULL) return;    
 
-    // Cargar datos
-    strcpy(nuevo->nombre, nombre);    // Copia el nombre al nodo
-    strcpy(nuevo->apellido, apellido);    // Copia el apellido al nodo
+    strcpy(nuevo->nombre, nombre);    
+    strcpy(nuevo->apellido, apellido);    
     nuevo->ci = ci;
-    nuevo->grado = grado;    // Guarda valores de ci, grado y promedio
+    nuevo->grado = grado;    
     nuevo->promedio = promedio;
-    nuevo->siguiente = NULL;    // Por ahora no apunta a ningún estudiante
+    nuevo->siguiente = NULL;    
 
-// Verificar si ya existe un estudiante con el mismo ci
-    estudiante_t *actual = *cabeza;    // Empieza desde el primer nodo
-    while (actual != NULL) {      // Recorre toda la lista de estudiantes
-        if (actual->ci == ci) {    // Si encuentra el mismo ci que se está ingresando 
+
+    estudiante_t *actual = *cabeza;    
+    while (actual != NULL) {      
+        if (actual->ci == ci) {    
             printf("Error: Estudiante con CI %u ya existe.\n", ci);
-            free(nuevo);          // Libera memoria para evitar duplicados
+            free(nuevo);         
             return;
         }
-        actual = actual->siguiente;    // Avanza al siguiente nodo
+        actual = actual->siguiente;    
     }
 
-    // Insertar al inicio de la lista 
-    nuevo->siguiente = *cabeza;    // El nuevo estudiante apunta al antiguo primer estudiante
-    *cabeza = nuevo;      // Se convierte en el cabeza de lista
+   
+    nuevo->siguiente = *cabeza;    
+    *cabeza = nuevo;     
 }
-// Función 2 para eliminar un estudiante
+// Función 2: Elimina un estudiante de la lista según su ci. Busca el nodo a eliminar, lo saltea y luego libera su memoria correspondiente
+// De parámetros recibe un doble puntero a cabeza que permite cambiar la cabeza si se requiere y el ci como entero sin signo de 32 bits
+// Por ser función void no retorna nada
 void eliminar_estudiante(estudiante_t **cabeza, uint32_t ci) {
-    if (*cabeza == NULL) return;    // Si no hay estudiantes, entonces sale
+    if (*cabeza == NULL) return;    
 
-    estudiante_t *actual = *cabeza;    // El puntero estudiante actual apunta al cabeza de lista
-    estudiante_t *anterior = NULL;    // El puntero estudiante anterior no apunta a nada
+    estudiante_t *actual = *cabeza;    
+    estudiante_t *anterior = NULL;     
 
-    while (actual != NULL) {      // Comienza a buscar en toda la lista
-        if (actual->ci == ci) {    // Si encuentra el ci buscado
-            if (anterior == NULL) {  // Esto ocurre cuando se quiere borrar el primer nodo de la lista
-                *cabeza = actual->siguiente; // Se hace que cabeza apunte al segundo nodo, dejando el primero sin uso
-            } else {                            // El primer puntero de la lista pasa a ser el que anteriormente era el segundo 
-                // Eliminar nodo intermedio o final
-                anterior->siguiente = actual->siguiente; // El anterior pasa al siguiente del actual, en resumen, se salta uno
+    while (actual != NULL) {      
+        if (actual->ci == ci) {    
+            if (anterior == NULL) {  
+                *cabeza = actual->siguiente; 
+            } else {                            
+                
+                anterior->siguiente = actual->siguiente; 
             }
-            free(actual);    // Libera la memoria del ci que se quiere eliminar
+            free(actual);    
             printf("Estudiante con CI %u eliminado.\n", ci);
             return;
         }
         anterior = actual;
-        actual = actual->siguiente;    // Mueve ambos punteros
+        actual = actual->siguiente;   
     }
     printf("Estudiante con CI %u no encontrado.\n", ci);
 }
@@ -126,7 +132,6 @@ void ordenar_por_apellido(estudiante_t *cabeza) {
 
             if (strcmp(ptr->apellido, ptr->siguiente->apellido) > 0) {
 
-                // intercambiar SOLO datos
                 char nombre[50], apellido[50];
                 int ci, grado;
                 float promedio;
@@ -158,7 +163,7 @@ void ordenar_por_apellido(estudiante_t *cabeza) {
     } while (swapped);
     mostrar_lista(cabeza);
 }
-// Función 7: Ordena estudiantes por ci creciente
+// Función 7: Ordena estudiantes por ci de manera creciente
 // Recibe como parámetro el puntero al comienzo de la lista
 // No devuleve nada por ser función void
 void ordenar_por_ci(estudiante_t *cabeza) {
@@ -175,7 +180,6 @@ void ordenar_por_ci(estudiante_t *cabeza) {
 
             if (ptr->ci > ptr->siguiente->ci) {
 
-                // intercambiar SOLO datos
                 char nombre[50], apellido[50];
                 int ci, grado;
                 float promedio;
@@ -211,6 +215,7 @@ void ordenar_por_ci(estudiante_t *cabeza) {
 // Menor a 31 será deficiente, entre 31 y 60 regular, entre 61 y 75 Bueno, entre 76 y 81 bueno muy bueno
 // Entre 82  y 94 muy bueno y entre 95 y 100 será sobresaliente
 // Recibe de parámetro un puntero al estudiante que queremos calificar
+// No devuelve nada al ser función void
 void calificacion(estudiante_t *estudiante) { 
     if (estudiante == NULL) return;
 
