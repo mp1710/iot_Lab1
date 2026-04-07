@@ -71,6 +71,12 @@ int32_t bin2dec(char *binary, bool sign) {
     return decimal;
 }
 
+// Esta funcion imprime los elementos de un array en orden inverso. 
+// Recibe un puntero al array, el tamaño del tipo de dato y la cantidad de elementos del array.
+// No retorna nada, solo imprime el array al revés.
+// *array: puntero al array a imprimir
+// data_type: tamaño del tipo de dato
+// array_size: cantidad de elementos del array
 void print_reverse_array(void *array, size_t data_type, size_t array_size) {
     if (array == NULL || array_size == 0) {
         printf("Array invalido.\n");
@@ -110,7 +116,12 @@ void print_reverse_array(void *array, size_t data_type, size_t array_size) {
     }
 }
 
-
+// Esta funcion encuentra el indice del valor máximo en un array.
+// Recibe un puntero al array, el tamaño del tipo de dato y la cantidad de elementos del array.
+// No retorna nada, solo imprime el indice y el valor máximo encontrado.
+// *array: puntero al array a analizar
+// data_type: tamaño del tipo de dato
+// array_size: cantidad de elementos del array
 void max_index(void *array,size_t data_type,size_t array_size) {
     if (data_type == sizeof(int32_t)) {
         int32_t *arr = (int32_t *)array;
@@ -153,6 +164,12 @@ void max_index(void *array,size_t data_type,size_t array_size) {
     }
 }
 
+// Esta funcion encuentra el indice del valor mínimo en un array (idem a la anterior).
+// Recibe un puntero al array, el tamaño del tipo de dato y la cantidad de elementos del array.
+// No retorna nada, solo imprime el indice y el valor mínimo encontrado.
+// *array: puntero al array a analizar
+// data_type: tamaño del tipo de dato
+// array_size: cantidad de elementos del array
 void min_index(void *array,size_t data_type,size_t array_size) {
     if (data_type == sizeof(int32_t)) {
         int32_t *arr = (int32_t *)array;
@@ -195,6 +212,13 @@ void min_index(void *array,size_t data_type,size_t array_size) {
     }
 }
 
+// Esta funcion realiza la resta de dos matrices A y B, y retorna una nueva matriz C con el resultado.
+// Recibe dos matrices A y B, que son estructuras que contienen un puntero a una matriz de valores, 
+// el numero de filas y el numero de columnas.
+// Retorna un puntero a una nueva matriz C con el resultado de la resta, 
+//o NULL si hay un error en la reserva de memoria.
+// Tiene una limitacion y es que A y B deben tener las mismas dimensiones para poder realizar la resta,
+// si no se retorna una matriz con data = NULL, rows = 0 y cols = 0.
 matriz_t* matrix_sub(matriz_t A, matriz_t B) {
     matriz_t *C = malloc(sizeof(matriz_t));
     if (C == NULL) {
