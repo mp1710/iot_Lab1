@@ -13,6 +13,11 @@ int main() {
     printf("Lista de estudiantes:\n");
     mostrar_lista(cabeza);
     printf("\n");
+    printf("Eliminar estudiante con CI 12345678:\n");
+    eliminar_estudiante(&cabeza, 12345678);
+    printf("\n");
+    printf("Lista de estudiantes después de eliminar:\n");
+    mostrar_lista(cabeza);
     printf("\nOrdenar por apellido:\n");
     ordenar_por_apellido(cabeza);
     printf("\n");
