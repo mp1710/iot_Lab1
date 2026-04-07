@@ -4,14 +4,22 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "global.h"
-
+//Esta funcion imprime los nombres del grupo usando printf, no retorna nada ni utiliza parametros
 void init_lab(void) {
     printf("Angelo Gauthier\n");
     printf("Pilar Martinez\n");
     printf("Ignacio Negri\n");
 }
 
+// Esta funcion calcula las raices de una ecuacion cuadratica usando la formula general.
+// Se calcula el discriminante para determinar si son raices complejas o reales, 
+// se almacenan en una struct y se retorna ese resultado. 
+// *coefficientes: es un puntero a una estructura que tiene los valores de a, b y c (coef. de la ecuacion).
+// *result: es un puntero a una estructura tipo root_t que tiene las raices calculadas. Si hay un error en 
+// la reserva de la memoria devuelve NULL. 
+// La memoria devuelta se libera en el main con free()
 root_t *eq_solver(coeff_t *coeficientes) {
+    // Obtengo a, b y c accediendo con el puntero por eso se usa (->). 
     double a = coeficientes->a;
     double b = coeficientes->b;
     double c = coeficientes->c;
@@ -21,7 +29,6 @@ root_t *eq_solver(coeff_t *coeficientes) {
     if (result == NULL) {
     return NULL;
     }
-    // Como result no es struct, es una direccion se accede con ->
     if (discriminante > 0) {
         result -> real1 = (-b + sqrt(discriminante)) / (2 * a);
         result -> imag1 = 0;
