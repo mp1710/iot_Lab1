@@ -51,16 +51,22 @@ root_t *eq_solver(coeff_t *coeficientes) {
     return result;
 }
 
+// Esta funcion recibe un numero binario (como cadena de caracteres), y lo convierte a su valor decimal.
+// Ademas puede interpretar si el numero es con signo (se realiza complemento a 2) o sin signo.
+// *binary: el numero binario a convertir a decimal
+// sign: boolean que indica si tiene bit de signo o no
+// se usan variables locales como decimal (para almacenar el numero decimal y retornarlo) y lengh (dice la medida del numero binario 
+// lo que permite recorrerlo).
 int32_t bin2dec(char *binary, bool sign) {
     int32_t decimal = 0;
     int length = strlen(binary);
     for (int i = 0; i < length; i++) {
         if (binary[length - 1 - i] == '1') {
-            decimal += pow(2, i);
+            decimal += (1<< i); // se le suma 2^i
         }
     }
     if (sign && binary[0] == '1') {
-        decimal -= pow(2, length);
+        decimal -= (1 << length); // se le resta 2^length
     }
     return decimal;
 }
