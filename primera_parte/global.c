@@ -521,7 +521,4 @@ int days_left(date_t start, date_t finish) {
     return days_finish - days_start;
 }
 
-    }
-
-    return days;
-}
+  
