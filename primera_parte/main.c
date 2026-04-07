@@ -40,7 +40,7 @@ int main(void) {
     print_reverse_array(str, sizeof(char), strlen(str));
     printf("\n");
     int32_t num[] = {1,6,3,4,5};
-    print_reverse_array(num, sizeof(int32_t), sizeof(num) / sizeof(num[0]))
+    print_reverse_array(num, sizeof(int32_t), sizeof(num) / sizeof(num[0]));
     printf("\n");
 
 // FUNCIÓN 5 max_index
