@@ -3,7 +3,7 @@
 #include <string.h>        // contiene las funciones que se utilizarán
 
 // Función para agregar un estudiante
-void agregar_estudiante(estudiante_t **cabeza,   // Utiliza doble puntero porque va a modificar la cabeza de la lista
+void agregar_estudiante(estudiante_t **cabeza,   // Utiliza doble puntero para poder modificar la cabeza de la lista
                         char nombre[64],      
                         char apellido[64],
                         uint32_t ci,
@@ -50,14 +50,14 @@ void eliminar_estudiante(estudiante_t **cabeza, uint32_t ci) {
                 *cabeza = actual->siguiente; // Se hace que cabeza apunte al segundo nodo, dejando el primero sin uso
             } else {                            // El primer puntero de la lista pasa a ser el que anteriormente era el segundo 
                 // Eliminar nodo intermedio o final
-                anterior->siguiente = actual->siguiente; // El anterior pasa al siguiente del actual, por lo que se salta uno
+                anterior->siguiente = actual->siguiente; // El anterior pasa al siguiente del actual, en resumen, se salta uno
             }
-            free(actual);    // Libera la memoria
+            free(actual);    // Libera la memoria del ci que se quiere eliminar
             printf("Estudiante con CI %u eliminado.\n", ci);
             return;
         }
         anterior = actual;
-        actual = actual->siguiente;
+        actual = actual->siguiente;    // Mueve ambos punteros
     }
     printf("Estudiante con CI %u no encontrado.\n", ci);
 }
