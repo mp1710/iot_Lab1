@@ -1,59 +1,58 @@
 #include "estudiantes.h"
-#include <stdlib.h>
-#include <string.h>
+#include <stdlib.h>     // Incluye librerías y el archivo estudiantes.h que contiene la estructura de estudiante_t y
+#include <string.h>        // contiene las funciones que se utilizarán
 
-
-void agregar_estudiante(estudiante_t **cabeza,
-                        char nombre[64],
+// Función para agregar un estudiante
+void agregar_estudiante(estudiante_t **cabeza,   // Utiliza doble puntero porque va a modificar la cabeza de la lista
+                        char nombre[64],      
                         char apellido[64],
                         uint32_t ci,
                         int grado,
                         float promedio) {
 
     // Crear nodo 
-    estudiante_t *nuevo = malloc(sizeof(estudiante_t));
-    if (nuevo == NULL) return;
+    estudiante_t *nuevo = malloc(sizeof(estudiante_t)); // Reserva memoria para un nuevo nodo y crea un estudainte dinámicamente
+    if (nuevo == NULL) return;    // Si falla la memoria, sale
 
     // Cargar datos
-    strcpy(nuevo->nombre, nombre);
-    strcpy(nuevo->apellido, apellido);
+    strcpy(nuevo->nombre, nombre);    // Copia el nombre al nodo
+    strcpy(nuevo->apellido, apellido);    // Copia el apellido al nodo
     nuevo->ci = ci;
-    nuevo->grado = grado;
+    nuevo->grado = grado;    // Guarda valores de ci, grado y promedio
     nuevo->promedio = promedio;
-    nuevo->siguiente = NULL;
+    nuevo->siguiente = NULL;    // Por ahora no apunta a ningún estudiante
 
 // Verificar si ya existe un estudiante con el mismo ci
-    estudiante_t *actual = *cabeza;
-    while (actual != NULL) {
-        if (actual->ci == ci) {
+    estudiante_t *actual = *cabeza;    // Empieza desde el primer nodo
+    while (actual != NULL) {      // Recorre toda la lista de estudiantes
+        if (actual->ci == ci) {    // Si encuentra el mismo ci que se está ingresando 
             printf("Error: Estudiante con CI %u ya existe.\n", ci);
-            free(nuevo);
+            free(nuevo);          // Libera memoria para evitar duplicados
             return;
         }
-        actual = actual->siguiente;
+        actual = actual->siguiente;    // Avanza al siguiente nodo
     }
 
     // Insertar al inicio de la lista 
-    nuevo->siguiente = *cabeza;
-    *cabeza = nuevo;
+    nuevo->siguiente = *cabeza;    // El nuevo estudiante apunta al antiguo primer estudiante
+    *cabeza = nuevo;      // Se convierte en el cabeza de lista
 }
-
+// Función para eliminar un estudiante
 void eliminar_estudiante(estudiante_t **cabeza, uint32_t ci) {
-    if (*cabeza == NULL) return;
+    if (*cabeza == NULL) return;    // Si no hay estudiantes, entonces sale
 
-    estudiante_t *actual = *cabeza;
-    estudiante_t *anterior = NULL;
+    estudiante_t *actual = *cabeza;    // El puntero estudiante actual apunta al cabeza de lista
+    estudiante_t *anterior = NULL;    // El puntero estudiante anterior no apunta a nada
 
-    while (actual != NULL) {
-        if (actual->ci == ci) {
-            if (anterior == NULL) {
-                // Eliminar el primer nodo
-                *cabeza = actual->siguiente;
-            } else {
+    while (actual != NULL) {      // Comienza a buscar en toda la lista
+        if (actual->ci == ci) {    // Si encuentra el ci buscado
+            if (anterior == NULL) {  // Esto ocurre cuando se quiere borrar el primer nodo de la lista
+                *cabeza = actual->siguiente; // Se hace que cabeza apunte al segundo nodo, dejando el primero sin uso
+            } else {                            // El primer puntero de la lista pasa a ser el que anteriormente era el segundo 
                 // Eliminar nodo intermedio o final
-                anterior->siguiente = actual->siguiente;
+                anterior->siguiente = actual->siguiente; // El anterior pasa al siguiente del actual, por lo que se salta uno
             }
-            free(actual);
+            free(actual);    // Libera la memoria
             printf("Estudiante con CI %u eliminado.\n", ci);
             return;
         }
