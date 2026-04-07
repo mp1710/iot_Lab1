@@ -72,16 +72,44 @@ int32_t bin2dec(char *binary, bool sign) {
 }
 
 void print_reverse_array(void *array, size_t data_type, size_t array_size) {
+    if (array == NULL || array_size == 0) {
+        printf("Array invalido.\n");
+        return;
+    }
+    
     if (data_type == sizeof(char)) {
         char *arr = (char *)array;
-        for (size_t i = array_size - 1; i < array_size; i--) {
-            printf("%c", arr[i]);
+        for (size_t i = array_size; i > 0; i--) {
+            printf("%c", arr[i-1]);
         }
         printf("\n");
-    } else {
+    } 
+    else if (data_type == sizeof(int32_t)) {
+        int32_t *arr = (int32_t *)array;
+        for (size_t i = array_size; i > 0; i--) {
+            printf("%d", arr[i-1]);
+        }
+        printf("\n");
+    } 
+    else if (data_type == sizeof(float)) {
+        float *arr = (float *)array;
+        for (size_t i = array_size; i > 0; i--) {
+            printf("%f", arr[i-1]);
+        }
+        printf("\n");
+    }
+    else if (data_type == sizeof(double)) {
+        double *arr = (double *)array;
+        for (size_t i = array_size; i > 0; i--) {
+            printf("%lf", arr[i-1]);
+        }
+        printf("\n");
+    }
+    else {
         printf("Tipo de dato no soportado.\n");
     }
 }
+
 
 void max_index(void *array,size_t data_type,size_t array_size) {
     if (data_type == sizeof(int32_t)) {
