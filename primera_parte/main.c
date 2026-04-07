@@ -228,8 +228,9 @@ int main(void) {
 
 // FUNCIÓN 20 days_left
     printf("Testing days_left:\n");
-    date_t start = {1, 1, 2024}; // 1 de enero de 2024
-    date_t finish = {31, 12, 2024}; // 31 de diciembre de 2024
+    //2004 fue bisiesto
+    date_t start = {20, 2, 2003}; // 20 de febrero de 2003
+    date_t finish = {14, 1, 2007}; // 14 de enero de 2007
     int days = days_left(start, finish);
     if (days != -1) {
         printf("Días restantes entre %d/%d/%d y %d/%d/%d: %d\n", start.day, start.month, start.year, finish.day, finish.month, finish.year, days);
