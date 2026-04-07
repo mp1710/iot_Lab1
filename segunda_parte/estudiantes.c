@@ -158,7 +158,9 @@ void ordenar_por_apellido(estudiante_t *cabeza) {
     } while (swapped);
     mostrar_lista(cabeza);
 }
-
+// Función 7: Ordena estudiantes por ci creciente
+// Recibe como parámetro el puntero al comienzo de la lista
+// No devuleve nada por ser función void
 void ordenar_por_ci(estudiante_t *cabeza) {
     if (cabeza == NULL) return;
 
@@ -205,7 +207,10 @@ void ordenar_por_ci(estudiante_t *cabeza) {
     } while (swapped);
     mostrar_lista(cabeza);
 }
-
+// Función 8: Convierte el promedio del estudiante en una calificación de texto.
+// Menor a 31 será deficiente, entre 31 y 60 regular, entre 61 y 75 Bueno, entre 76 y 81 bueno muy bueno
+// Entre 82  y 94 muy bueno y entre 95 y 100 será sobresaliente
+// Recibe de parámetro un puntero al estudiante que queremos calificar
 void calificacion(estudiante_t *estudiante) { 
     if (estudiante == NULL) return;
 
