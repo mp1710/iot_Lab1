@@ -13,10 +13,10 @@ int main(void) {
     printf("\n");
 
 // FUNCIÓN 2 eq_solver
+    //Creo los coeficientes con coef de tipo coeff_t
+    //Llamo a eq_solver con la direccion de coef y guardo el resultado en un puntero a root_t
     printf("Testing eq_solver:\n");
-    // Creo coeficientes para la ecuacion x^2 - 5x + 6 = 0, que tiene raices reales y distintas (2 y 3)
     coeff_t coef = {1, -5, 6};
-    // Llamo a eq_solver con los coeficientes y guardo el resultado en un puntero a root_t
     root_t *result = eq_solver(&coef);
 
     if (result != NULL) {
@@ -29,7 +29,7 @@ int main(void) {
 
 // FUNCIÓN 3 bin2dec
     printf("Testing bin2dec:\n");
-    char binary[] = "1101"; // Representa el número 13 en binario
+    char binary[] = "1101"; 
     int32_t decimal = bin2dec(binary, false);
     printf("El número decimal de %s es: %d\n", binary, decimal);
     printf("\n");
@@ -38,6 +38,9 @@ int main(void) {
     printf("Testing print_reverse_array:\n");
     char str[] = "Prueba de print_reverse_array en LABORATORIO 1";
     print_reverse_array(str, sizeof(char), strlen(str));
+    printf("\n");
+    int32_t num[] = {1,6,3,4,5};
+    print_reverse_array(num, sizeof(int32_t), sizeof(num) / sizeof(num[0]))
     printf("\n");
 
 // FUNCIÓN 5 max_index
