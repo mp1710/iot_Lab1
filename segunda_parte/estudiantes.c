@@ -42,6 +42,7 @@ void agregar_estudiante(estudiante_t **cabeza,
     *cabeza = nuevo;     
 }
 // Función 2: Elimina un estudiante de la lista según su ci. Busca el nodo a eliminar, lo saltea y luego libera su memoria correspondiente
+// Si lo encuentra y lo elimina imprime "Estudiante con CI X eliminado", si no lo encuentra en la lista, imprime "Estudiante con CI X no encontrado"
 // De parámetros recibe un doble puntero a cabeza que permite cambiar la cabeza si se requiere y el ci como entero sin signo de 32 bits
 // Por ser función void no retorna nada
 void eliminar_estudiante(estudiante_t **cabeza, uint32_t ci) {
@@ -163,7 +164,7 @@ void ordenar_por_apellido(estudiante_t *cabeza) {
     } while (swapped);
     mostrar_lista(cabeza);
 }
-// Función 7: Ordena estudiantes por ci de manera creciente
+// Función 7: Ordena la lista de estudiantes por ci de manera creciente y luego la muestra
 // Recibe como parámetro el puntero al comienzo de la lista
 // No devuleve nada por ser función void
 void ordenar_por_ci(estudiante_t *cabeza) {
@@ -215,7 +216,7 @@ void ordenar_por_ci(estudiante_t *cabeza) {
 // Menor a 31 será deficiente, entre 31 y 60 regular, entre 61 y 75 Bueno, entre 76 y 81 bueno muy bueno
 // Entre 82  y 94 muy bueno y entre 95 y 100 será sobresaliente
 // Recibe de parámetro un puntero al estudiante que queremos calificar
-// No devuelve nada al ser función void
+// No devuelve nada al ser función void, pero imprime "Estudiante: nombre apellido, Promedio: X, Calificación: nota en texto"
 void calificacion(estudiante_t *estudiante) { 
     if (estudiante == NULL) return;
 
