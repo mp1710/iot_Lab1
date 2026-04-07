@@ -3,7 +3,7 @@
 #include <string.h>        
 
 // Función 1: Crea memoria dinámica para agregar un estudiante, carga su nombre, apellido, ci, grado y promedio.
-              // Verfifica que no exista otro estudiante con el mismo ci y en tal caso imprime "Estudiante con CI X ya existe".
+              // Verifica que no exista otro estudiante con el mismo ci y en tal caso imprime "Estudiante con CI X ya existe".
               // Además, actualiza la cabeza de la lista, que pasa a ser el nuevo estudiante agregado
 // Parámetros: Utiliza doble puntero para poder modificar la cabeza de la lista. Recibe la dirección del inicio de la lista, nombre del 
 // estudiante como char de hasta 64 caracteres, apellido de igual tipo, ci de tipo entero sin signo de 32 bits, grado de tipo entero, y 
