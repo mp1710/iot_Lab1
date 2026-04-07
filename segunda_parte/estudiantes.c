@@ -79,10 +79,8 @@ void mostrar_lista(estudiante_t *cabeza) {
 // Los parámetros que recibe son el puntero al inicio de la lista y un char con el nombre a buscar, que no puede ser modificado por la función debido a "const"
 // La función es void por lo que no retorna nada
 void mostrar_estudiante_nombre(estudiante_t *cabeza, const char *nombre) {
-// Se recorre la lista buscando el estudiante con el nombre especificado    
     estudiante_t *actual = cabeza;
-    while (actual != NULL) {
-    // Se compara el nombre del estudiante actual con el nombre buscado usando strcmp    
+    while (actual != NULL) {  
         if (strcmp(actual->nombre, nombre) == 0) {
             printf("Nombre: %s %s, CI: %u, Grado: %d, Promedio: %.2f\n",
                    actual->nombre, actual->apellido, actual->ci,
@@ -93,7 +91,10 @@ void mostrar_estudiante_nombre(estudiante_t *cabeza, const char *nombre) {
     }
     printf("Estudiante con nombre %s no encontrado.\n", nombre);
 }
-
+// Función 5: Busca un estudiante utilizando su ci e imprime su nombre, apellido, ci, grado y promedio
+              // Si no lo encuentra imprime "Estudiante con CI X no encontrado"
+// Recibe de parámetros el puntero a cabeza, inicio de la lista, y la cédula a buscar de tipo entero sin signo de 32 bits
+// La función es void así que no retorna nada
 void mostrar_estudiante_ci(estudiante_t *cabeza, uint32_t ci) {
     estudiante_t *actual = cabeza;
     while (actual != NULL) {
@@ -108,7 +109,9 @@ void mostrar_estudiante_ci(estudiante_t *cabeza, uint32_t ci) {
     printf("Estudiante con CI %u no encontrado.\n", ci);
 }
 
-
+// Función 6: Ordena la lista alfabéticamente por apellido y luego la muestra
+// Recibe de parámetro un puntero al principio de la lista
+// Es función void así que no devuelve nada
 void ordenar_por_apellido(estudiante_t *cabeza) {
     if (cabeza == NULL) return;
 
