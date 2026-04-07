@@ -250,7 +250,12 @@ matriz_t* matrix_sub(matriz_t A, matriz_t B) {
     return C;
 }
 
-
+// Esta funcion intercambia los valores de dos variables de cualquier tipo de dato (int, float o double).
+// Recibe dos punteros a las variables a intercambiar y el tamaño del tipo de dato (data_type).
+// Retorna 0 si el swap fue realizado, o -1 si el tipo de dato no es soportado.
+// *elem_1: puntero a la primera variable a intercambiar
+// *elem_2: puntero a la segunda variable a intercambiar
+// data_type: tamaño del tipo de dato (sizeof(int32_t), sizeof(float) o sizeof(double))
 int swap(void *elem_1, void *elem_2, size_t data_type) {
     if (data_type == sizeof(int32_t)) {
         int32_t aux = *(int32_t *)elem_1;
@@ -273,11 +278,15 @@ int swap(void *elem_1, void *elem_2, size_t data_type) {
     }
 }
 
+// Esta funcion cuenta el numero de consonantes en una cadena de caracteres. 
+// Se cuentan a medida que sea una letra (mayuscula o minuscula) y no sea una vocal o simbolo.
+// Recibe un puntero a la cadena de caracteres a analizar, y retorna el numero de consonantes encontradas.
+// *string: puntero a la cadena de caracteres a analizar
 int consonantes(char *string) {
     int num_consonantes = 0;
-    char *p = string; // Puntero para recorrer la cadena
+    char *p = string; 
     while (*p != '\0') {
-        if ((*p >= 'a' && *p <= 'z') || (*p >= 'A' && *p <= 'Z')) { // Mientras que el string sean letras, no símbolos
+        if ((*p >= 'a' && *p <= 'z') || (*p >= 'A' && *p <= 'Z')) { 
             if (*p != 'a' && *p != 'e' && *p != 'i' && *p != 'o' && *p != 'u' &&
                 *p != 'A' && *p != 'E' && *p != 'I' && *p != 'O' && *p != 'U') {
                 num_consonantes++;
