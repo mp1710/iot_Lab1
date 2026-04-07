@@ -297,10 +297,12 @@ int consonantes(char *string) {
     return num_consonantes;
 }
 
-// Número de vocales en una cadena
+// Cuenta la cantidad de vocales en un string.
+// Recibe un puntero a char (string).
+// Retorna un int con la cantidad de vocales encontradas.
 int vocales(char *string) {
     int num_vocales = 0;
-    char *p = string; // Puntero para recorrer la cadena
+    char *p = string;
     while (*p != '\0') {
         if (*p == 'a' || *p == 'e' || *p == 'i' || *p == 'o' || *p == 'u' ||
             *p == 'A' || *p == 'E' || *p == 'I' || *p == 'O' || *p == 'U') {
@@ -311,19 +313,25 @@ int vocales(char *string) {
     return num_vocales;
 }
 
+// Esta funcion invierte un string.
+// Recibe un puntero a char (string).
+// Retorna un puntero a un nuevo string invertido (usa memoria dinamica, puede retornar NULL).
 char* reverse_string(char *string) {
     int length = strlen(string);
-    char *reversed = malloc((length + 1) * sizeof(char)); // +1 para el carácter nulo
+    char *reversed = malloc((length + 1) * sizeof(char));
     if (reversed == NULL) {
-        return NULL; // Retorna NULL si no se pudo asignar memoria
+        return NULL; 
     }
     for (int i = 0; i < length; i++) {
         reversed[i] = string[length - 1 - i];
     }
-    reversed[length] = '\0'; // Agregar el carácter nulo al final de la cadena
+    reversed[length] = '\0';
     return reversed;
 }
 
+// Esta funcion calcula la longitud de un string con limite arbitrario (20).
+// Recibe un puntero a char (string).
+// Retorna la longitud (int32_t). Devuelve -1 si es NULL o supera 20 caracteres.
 int32_t string_length(char *string) {
     if (string == NULL) {
         return -1; // Retorna -1 si el puntero es NULL
@@ -331,9 +339,9 @@ int32_t string_length(char *string) {
 
     int32_t length = 0;
 
-    while (string[length] != '\0' && length <= 20) { // Límite arbitrario de 20 caracteres para evitar desbordamiento
+    while (string[length] != '\0' && length <= 20) { 
         if (length >= 20) {
-            return -1; // Retorna -1 si se supera el límite de 20 caracteres sin encontrar el carácter nulo
+            return -1; 
         }
         length++;
     }
@@ -341,7 +349,9 @@ int32_t string_length(char *string) {
     return length;
 }
 
-
+// Esta funcion cuenta la cantidad de palabras en un string. Se pone un limite de 50 caracteres para el string, de manera arbitraria.
+// Recibe un puntero a char (string).
+// Retorna el numero de palabras (int32_t). Devuelve -1 si es NULL o supera 50 caracteres.
 int32_t string_words(char *string) {
     if (string == NULL) return -1;
 
@@ -361,23 +371,29 @@ int32_t string_words(char *string) {
         length++;
     }
 
-    if (length == 50 && string[length] != '\0') {   // si llegaste al límite sin '\0'
+    if (length == 50 && string[length] != '\0') {
         return -1;
     }
 
     return words;
 }
 
+// Esta funcion copia un string en otro,
+// Recibe un string origen (char*) y destino (char*).
+// Retorna 0 si la copia se realiza correctamente.
 int string_copy(char *source, char *destination) {
     while (*source) {
         *destination = *source;
         source++;
         destination++;
     }
-    *destination = '\0'; // Agregar el carácter nulo al final de la cadena
-    return 0; // Retornar la dirección del destino
+    *destination = '\0';
+    return 0;
 }
 
+// Esta funcion busca una subcadena dentro de otra, recorriendo los str con punteros y comparando.
+// Recibe la string principal (haystack) y subcadena (needle).
+// Retorna el indice de la primera aparicion o -1 si no se encuentra.
 int find_in_string(char *haystack, char *needle) {
     char *p_haystack = haystack;
     char *p_needle = needle;
@@ -401,27 +417,33 @@ int find_in_string(char *haystack, char *needle) {
     return -1; // Retorna -1 si no se encuentra la subcadena
 }
 
-//Convertir string a mayúsculas
+// Esta funcion convierte un string a minusculas, restando 32 al valor del char si este corresponde a una minuscula.
+// Recibe un puntero a char (string).
+// No retorna nada, solo modifica el string original.
 void string_to_caps(char *string) {
     for (size_t i = 0; string[i] != '\0'; i++) {
-        if (string[i] >= 'a' && string[i] <= 'z') { // Si el string es una letra minúscula resta 32
-            string[i] = string[i] - 32;      // Las letras son código ascii, representan un número, 32 representa el número de
-        }                                       // la distancia entre una letra minúscula y su respectiva letra mayúscula
+        if (string[i] >= 'a' && string[i] <= 'z') {
+            string[i] = string[i] - 32;
+        }
     }
     printf("String en mayúsculas: %s\n", string);
 }
 
-//Convertir string a minúsculas
+// Esta funcion convierte un string a minusculas, sumando 32 al valor del char si este corresponde a una mayuscula.
+// Recibe un puntero a char (string).
+// No retorna nada, solo modifica el string original.
 void string_to_min(char *string) {
     for (size_t i = 0; string[i] != '\0'; i++) {
-        if (string[i] >= 'A' && string[i] <= 'Z') { // Si el string es una letra mayúscula suma 32
+        if (string[i] >= 'A' && string[i] <= 'Z') {
             string[i] = string[i] + 32;
         }
     }
     printf("String en minúsculas: %s\n", string);
 }
 
-
+// Esta funcion suma dos numeros complejos, sumando parte real con parte real, e parte imaginaria con parte imaginaria.
+// Recibe dos estructuras complex_t.
+// Retorna un puntero a complex_t con el resultado (usa memoria dinamica, puede ser NULL). 
 complex_t* sum(complex_t a, complex_t b) {
     complex_t *resultado = malloc(sizeof(complex_t));
     if (resultado == NULL) {
@@ -433,6 +455,11 @@ complex_t* sum(complex_t a, complex_t b) {
     return resultado;
 }
 
+// Esta funcion realiza el producto entre dos numeros complejos, operando con las componentes reales e imaginarias de los numeros, la componenete real del
+// resultado depende del producto de las partes reales y el producto de las partes imaginarias (j*j=-1), mientras que la parte imaginaria del resultado
+// depende de los productos de partes reales con imaginarias entre los numeros.
+// Recibe como parametros dos numeros complejos guadrados en struct, para trabajar con sus componentes independientes, y retorna el resultado
+// con sus componentes como un puntero a un struct del mismo tipo (usa memoria dinamica, puede ser NULL).
 complex_t* prod(complex_t a, complex_t b) {
     complex_t *resultado = malloc(sizeof(complex_t));
     if (resultado == NULL) {
@@ -444,30 +471,56 @@ complex_t* prod(complex_t a, complex_t b) {
     return resultado;
 }
 
-
+// Esta funcion calcula los dias transcurridos entre dos fechas.
+// Convierte ambas fechas a dias totales desde el año 1 y luego las resta.
+// Recibe dos estructuras date_t (start y finish).
+// Retorna un int con la diferencia en dias entre la fecha final y la inicial.
 int days_left(date_t start, date_t finish) {
-    int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int days = 0;
 
-    if (start.year == finish.year) {
-        if (start.month == finish.month) {
-            return finish.day - start.day;
+    int days_start = 0;
+    int days_finish = 0;
+
+    int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    for (int y = 1; y < start.year; y++) {
+        if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) {
+            days_start += 366;
         } else {
-            days += days_in_month[start.month - 1] - start.day;
-            for (int i = start.month; i < finish.month - 1; i++) {
-                days += days_in_month[i];
-            }
-            days += finish.day;
+            days_start += 365;
         }
-    } else {
-        days += days_in_month[start.month - 1] - start.day;
-        for (int i = start.month; i < 12; i++) {
-            days += days_in_month[i];
+    }
+
+    if ((start.year % 4 == 0 && start.year % 100 != 0) || (start.year % 400 == 0)) {
+        days_in_month[1] = 29;
+    }
+
+    for (int m = 1; m < start.month; m++) {
+        days_start += days_in_month[m - 1];
+    }
+
+    days_start += start.day;
+
+    int days_in_month_finish[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    for (int y = 1; y < finish.year; y++) {
+        if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) {
+            days_finish += 366;
+        } else {
+            days_finish += 365;
         }
-        for (int i = 0; i < finish.month - 1; i++) {
-            days += days_in_month[i];
-        }
-        days += finish.day;
+    }
+
+    if ((finish.year % 4 == 0 && finish.year % 100 != 0) || (finish.year % 400 == 0)) {
+        days_in_month_finish[1] = 29;
+    }
+
+    for (int m = 1; m < finish.month; m++) {
+        days_finish += days_in_month_finish[m - 1];
+    }
+
+    days_finish += finish.day;
+
+    return days_finish - days_start;
+}
+
     }
 
     return days;
