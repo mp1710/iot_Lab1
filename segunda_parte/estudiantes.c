@@ -2,7 +2,7 @@
 #include <stdlib.h>     // Incluye librerías y el archivo estudiantes.h que contiene la estructura de estudiante_t y
 #include <string.h>        // contiene las funciones que se utilizarán
 
-// Función para agregar un estudiante
+// Función 1 para agregar un estudiante
 void agregar_estudiante(estudiante_t **cabeza,   // Utiliza doble puntero para poder modificar la cabeza de la lista
                         char nombre[64],      
                         char apellido[64],
@@ -37,7 +37,7 @@ void agregar_estudiante(estudiante_t **cabeza,   // Utiliza doble puntero para p
     nuevo->siguiente = *cabeza;    // El nuevo estudiante apunta al antiguo primer estudiante
     *cabeza = nuevo;      // Se convierte en el cabeza de lista
 }
-// Función para eliminar un estudiante
+// Función 2 para eliminar un estudiante
 void eliminar_estudiante(estudiante_t **cabeza, uint32_t ci) {
     if (*cabeza == NULL) return;    // Si no hay estudiantes, entonces sale
 
@@ -61,7 +61,9 @@ void eliminar_estudiante(estudiante_t **cabeza, uint32_t ci) {
     }
     printf("Estudiante con CI %u no encontrado.\n", ci);
 }
-
+// Función 3: Recorre toda la lista de estudiantes e imprime nombre, apellido, ci, grado y promedio de cada uno de ellos
+// El parámetro que recibe es un puntero al primer nodo de la lista, para empezar a recorrer desde allí
+// Como la función es void no tiene retorno
 void mostrar_lista(estudiante_t *cabeza) {
     estudiante_t *actual = cabeza;
     while (actual != NULL) {
@@ -72,7 +74,10 @@ void mostrar_lista(estudiante_t *cabeza) {
     }
 }
 
-
+// Función 4: Busca un estudiante en particular por nombre y muestra su nombre, apellido, ci , grado, promedio.
+              // Si no lo encuentra muestra "Estudiante con nombre X no encontrado"
+// Los parámetros que recibe son el puntero al inicio de la lista y un char con el nombre a buscar, que no puede ser modificado por la función debido a "const"
+// La función es void por lo que no retorna nada
 void mostrar_estudiante_nombre(estudiante_t *cabeza, const char *nombre) {
 // Se recorre la lista buscando el estudiante con el nombre especificado    
     estudiante_t *actual = cabeza;
