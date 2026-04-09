@@ -62,7 +62,7 @@ int32_t bin2dec(char *binary, bool sign) {
     int length = strlen(binary);
     for (int i = 0; i < length; i++) {
         if (binary[length - 1 - i] == '1') {
-            decimal += (1<< i); // se le suma 2^i
+            decimal += (1 << i); // se le suma 2^i
         }
     }
     if (sign && binary[0] == '1') {
@@ -74,40 +74,52 @@ int32_t bin2dec(char *binary, bool sign) {
 // Esta funcion imprime los elementos de un array en orden inverso. 
 // Recibe un puntero al array, el tamaño del tipo de dato y la cantidad de elementos del array.
 // No retorna nada, solo imprime el array al revés.
+// Se utilizo aritmetica de punteros para recorrer el array desde el final hasta el principio, 
+// y se hizo un cast del puntero a un tipo de dato especifico segun el valor 
+// de data_type_t para poder imprimirlo correctamente.
 // *array: puntero al array a imprimir
 // data_type: tamaño del tipo de dato
 // array_size: cantidad de elementos del array
-void print_reverse_array(void *array, size_t data_type, size_t array_size) {
+void print_reverse_array(void *array, data_type_t type, size_t array_size){
+    
     if (array == NULL || array_size == 0) {
         printf("Array invalido.\n");
         return;
     }
     
-    if (data_type == sizeof(char)) {
+    if (type == sizeof(char)) {
         char *arr = (char *)array;
-        for (size_t i = array_size; i > 0; i--) {
-            printf("%c", arr[i-1]);
+        char *actual = arr + (array_size - 1);
+        while (actual >= arr) {
+            printf("%c", *actual);
+            actual--;
         }
         printf("\n");
     } 
-    else if (data_type == sizeof(int32_t)) {
+    else if (type == sizeof(int32_t)) {
         int32_t *arr = (int32_t *)array;
-        for (size_t i = array_size; i > 0; i--) {
-            printf("%d", arr[i-1]);
+        int32_t *actual = arr + (array_size - 1);
+        while (actual >= arr) {
+            printf("%d ", *actual);
+            actual--;
         }
         printf("\n");
     } 
-    else if (data_type == sizeof(float)) {
+    else if (type == sizeof(float)) {
         float *arr = (float *)array;
-        for (size_t i = array_size; i > 0; i--) {
-            printf("%f", arr[i-1]);
+        float *actual = arr + (array_size - 1);
+        while (actual >= arr) {
+            printf("%f", *actual);
+            actual--;
         }
         printf("\n");
     }
-    else if (data_type == sizeof(double)) {
+    else if (type == sizeof(double)) {
         double *arr = (double *)array;
-        for (size_t i = array_size; i > 0; i--) {
-            printf("%lf", arr[i-1]);
+        double *actual = arr + (array_size - 1);
+        while (actual >= arr) {
+            printf("%lf", *actual);
+            actual--;
         }
         printf("\n");
     }
@@ -119,99 +131,192 @@ void print_reverse_array(void *array, size_t data_type, size_t array_size) {
 // Esta funcion encuentra el indice del valor máximo en un array.
 // Recibe un puntero al array, el tamaño del tipo de dato y la cantidad de elementos del array.
 // No retorna nada, solo imprime el indice y el valor máximo encontrado.
+// Al igual que la funcion anterior, se utilzo aritmetica de punteros y se casteo el puntero al tipo de dato especifico. 
 // *array: puntero al array a analizar
 // data_type: tamaño del tipo de dato
 // array_size: cantidad de elementos del array
-void max_index(void *array,size_t data_type,size_t array_size) {
-    if (data_type == sizeof(int32_t)) {
-        int32_t *arr = (int32_t *)array;
-        int32_t max = arr[0];
+int max_index(void *array, data_type_t type, size_t array_size) {
+    if (array == NULL || array_size == 0) {
+        printf("Array invalido.\n");
+        return -1;
+    }
+
+    if (type == TYPE_INT32) {
+        int32_t *ptr = (int32_t *)array;
+        int32_t max = *ptr;
         size_t max_index = 0;
-        for (size_t i = 1; i < array_size; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+
+        int32_t *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current > max) {
+                max = *current;
                 max_index = i;
             }
+            current++;
+            i++;
         }
-        printf("El índice del valor máximo es: %zu\n", max_index);
-        printf("El valor máximo es: %d\n", max);
-    } else if (data_type == sizeof(float)) {
-        float *arr = (float *)array;
-        float max = arr[0];
+        return (int)max_index;
+
+    } else if (type == TYPE_FLOAT) {
+        float *ptr = (float *)array;
+        float max = *ptr;
         size_t max_index = 0;
-        for (size_t i = 1; i < array_size; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+
+        float *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current > max) {
+                max = *current;
                 max_index = i;
             }
+            current++;
+            i++;
         }
-        printf("El índice del valor máximo es: %zu\n", max_index);
-        printf("El valor máximo es: %f\n", max);
-    } else if (data_type == sizeof(double)) {
-        double *arr = (double *)array;
-        double max = arr[0];
+
+        return (int)max_index;
+
+    } else if (type == TYPE_DOUBLE) {
+        double *ptr = (double *)array;
+        double max = *ptr;
         size_t max_index = 0;
-        for (size_t i = 1; i < array_size; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+
+        double *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current > max) {
+                max = *current;
                 max_index = i;
             }
+            current++;
+            i++;
         }
-        printf("El índice del valor máximo es: %zu\n", max_index);
-        printf("El valor máximo es: %lf\n", max);
+
+        return (int)max_index;
+
+    } else if (type == TYPE_INT8) {
+        int8_t *ptr = (int8_t *)array;
+        int8_t max = *ptr;
+        size_t max_index = 0;
+
+        int8_t *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current > max) {
+                max = *current;
+                max_index = i;
+            }
+            current++;
+            i++;
+        }
+
+        return (int)max_index;
     } else {
         printf("Tipo de dato no soportado.\n");
+        return -1;
+
     }
 }
-
 // Esta funcion encuentra el indice del valor mínimo en un array (idem a la anterior).
 // Recibe un puntero al array, el tamaño del tipo de dato y la cantidad de elementos del array.
 // No retorna nada, solo imprime el indice y el valor mínimo encontrado.
 // *array: puntero al array a analizar
 // data_type: tamaño del tipo de dato
 // array_size: cantidad de elementos del array
-void min_index(void *array,size_t data_type,size_t array_size) {
-    if (data_type == sizeof(int32_t)) {
-        int32_t *arr = (int32_t *)array;
-        int32_t min = arr[0];
+#include <stdio.h>
+#include <stdint.h>
+
+int min_index(void *array, data_type_t type, size_t array_size) {
+    if (array == NULL || array_size == 0) {
+        printf("Array invalido.\n");
+        return -1;
+    }
+
+    if (type == TYPE_INT32) {
+        int32_t *ptr = (int32_t *)array;
+        int32_t min = *ptr;
         size_t min_index = 0;
-        for (size_t i = 1; i < array_size; i++) {
-            if (arr[i] < min) {
-                min = arr[i];
+
+        int32_t *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current < min) {
+                min = *current;
                 min_index = i;
             }
+            current++;
+            i++;
         }
-        printf("El índice del valor mínimo es: %zu\n", min_index);
-        printf("El valor mínimo es: %d\n", min);
-    } else if (data_type == sizeof(float)) {
-        float *arr = (float *)array;
-        float min = arr[0];
+
+        return (int)min_index;
+
+    } else if (type == TYPE_FLOAT) {
+        float *ptr = (float *)array;
+        float min = *ptr;
         size_t min_index = 0;
-        for (size_t i = 1; i < array_size; i++) {
-            if (arr[i] < min) {
-                min = arr[i];
+
+        float *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current < min) {
+                min = *current;
                 min_index = i;
             }
+            current++;
+            i++;
         }
-        printf("El índice del valor mínimo es: %zu\n", min_index);
-        printf("El valor mínimo es: %f\n", min);
-    } else if (data_type == sizeof(double)) {
-        double *arr = (double *)array;
-        double min = arr[0];
+
+        return (int)min_index;
+
+    } else if (type == TYPE_DOUBLE) {
+        double *ptr = (double *)array;
+        double min = *ptr;
         size_t min_index = 0;
-        for (size_t i = 1; i < array_size; i++) {
-            if (arr[i] < min) {
-                min = arr[i];
+
+        double *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current < min) {
+                min = *current;
                 min_index = i;
             }
+            current++;
+            i++;
         }
-        printf("El índice del valor mínimo es: %zu\n", min_index);
-        printf("El valor mínimo es: %lf\n", min);
+
+        return (int)min_index;
+
+    } else if (type == TYPE_INT8) {
+        int8_t *ptr = (int8_t *)array;
+        int8_t min = *ptr;
+        size_t min_index = 0;
+
+        int8_t *current = ptr + 1;
+        size_t i = 1;
+
+        while (i < array_size) {
+            if (*current < min) {
+                min = *current;
+                min_index = i;
+            }
+            current++;
+            i++;
+        }
+
+        return (int)min_index;    
+
     } else {
         printf("Tipo de dato no soportado.\n");
+        return -1;
     }
 }
-
 // Esta funcion realiza la resta de dos matrices A y B, y retorna una nueva matriz C con el resultado.
 // Recibe dos matrices A y B, que son estructuras que contienen un puntero a una matriz de valores, 
 // el numero de filas y el numero de columnas.
@@ -222,31 +327,34 @@ void min_index(void *array,size_t data_type,size_t array_size) {
 matriz_t* matrix_sub(matriz_t A, matriz_t B) {
     matriz_t *C = malloc(sizeof(matriz_t));
     if (C == NULL) {
-        printf("Error al asignar memoria para la matriz resultante.\n");
         return NULL;
     }
+
     if (A.rows != B.rows || A.cols != B.cols) {
-        printf("Las matrices deben tener las mismas dimensiones.\n");
         C->data = NULL;
         C->rows = 0;
         C->cols = 0;
         return C;
     }
+
     C->rows = A.rows;
     C->cols = A.cols;
-    C->data = malloc(C->rows * sizeof(int*));
-    for (int i = 0; i < C->rows; i++) {
-        C->data[i] = malloc(C->cols * sizeof(int));
+
+    size_t total = C->rows * C->cols;
+    C->data = (int16_t **)malloc(total * sizeof(int16_t));
+    if (C->data == NULL) {
+        free(C);
+        return NULL;
     }
 
-    // Resta
-    for (int i = 0; i < C->rows; i++) {
-        for (int j = 0; j < C->cols; j++) {
-            C->data[i][j] = A.data[i][j] - B.data[i][j];
-            printf("%d ", C->data[i][j]);
-        }
-        printf("\n");
+    int16_t *a = (int16_t *)A.data;
+    int16_t *b = (int16_t *)B.data;
+    int16_t *c = (int16_t *)C->data;
+
+    for (size_t i = 0; i < total; i++) {
+        c[i] = a[i] - b[i];
     }
+
     return C;
 }
 
@@ -257,7 +365,11 @@ matriz_t* matrix_sub(matriz_t A, matriz_t B) {
 // *elem_2: puntero a la segunda variable a intercambiar
 // data_type: tamaño del tipo de dato (sizeof(int32_t), sizeof(float) o sizeof(double))
 int swap(void *elem_1, void *elem_2, size_t data_type) {
-    if (data_type == sizeof(int32_t)) {
+    if (elem_1 == NULL || elem_2 == NULL) {
+        return -1;
+    }
+
+    if (data_type == sizeof(int32_t) || data_type == sizeof(int)) {
         int32_t aux = *(int32_t *)elem_1;
         *(int32_t *)elem_1 = *(int32_t *)elem_2;
         *(int32_t *)elem_2 = aux;
@@ -272,10 +384,14 @@ int swap(void *elem_1, void *elem_2, size_t data_type) {
         *(double *)elem_1 = *(double *)elem_2;
         *(double *)elem_2 = aux;
         return 0;
-    } else {
-        printf("Tipo de dato no soportado.\n");
-        return -1;
+    } else if (data_type == sizeof(char)) {
+        char aux = *(char *)elem_1;
+        *(char *)elem_1 = *(char *)elem_2;
+        *(char *)elem_2 = aux;
+        return 0;
     }
+
+    return -1;
 }
 
 // Esta funcion cuenta el numero de consonantes en una cadena de caracteres. 
@@ -382,6 +498,9 @@ int32_t string_words(char *string) {
 // Recibe un string origen (char*) y destino (char*).
 // Retorna 0 si la copia se realiza correctamente.
 int string_copy(char *source, char *destination) {
+    if (source == NULL || destination == NULL) {
+        return -1; 
+    }
     while (*source) {
         *destination = *source;
         source++;
@@ -397,6 +516,10 @@ int string_copy(char *source, char *destination) {
 int find_in_string(char *haystack, char *needle) {
     char *p_haystack = haystack;
     char *p_needle = needle;
+
+    if (*needle == '\0') {
+        return 0;
+    }
 
     while (*p_haystack) {
         if (*p_haystack == *p_needle) {
@@ -520,5 +643,3 @@ int days_left(date_t start, date_t finish) {
 
     return days_finish - days_start;
 }
-
-  
