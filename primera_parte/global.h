@@ -14,10 +14,10 @@ typedef struct {
 } coeff_t;
 
 typedef struct {
-    int32_t real1; //parte real de la primera raiz
-    int32_t imag1; //parte imaginaria de la primera raiz
-    int32_t real2; //parte real de la segunda raiz
-    int32_t imag2; //parte imaginaria de la segunda raiz
+    double real1; //parte real de la primera raiz
+    double imag1; //parte imaginaria de la primera raiz
+    double real2; //parte real de la segunda raiz
+    double imag2; //parte imaginaria de la segunda raiz
     bool complex; //true si las raices son complejas o reales;
 } root_t;
 
@@ -38,6 +38,13 @@ typedef struct {
     size_t cols; // numero de columnas
 } matriz_t;
 
+typedef enum {
+    TYPE_INT32 = sizeof(int32_t),
+    TYPE_INT8 = sizeof(int8_t),
+    TYPE_FLOAT = sizeof(float),
+    TYPE_DOUBLE = sizeof(double),
+    TYPE_CHAR = sizeof(char)
+} data_type_t; 
 // Declaración de funciones 
 
 //FUNCIÓN 1
@@ -50,13 +57,13 @@ root_t *eq_solver(coeff_t *coeficientes);
 int32_t bin2dec(char *binary, bool sign);
 
 //FUNCIÓN 4
-void print_reverse_array(void *array, size_t data_type, size_t array_size);
+void print_reverse_array(void *array, data_type_t type, size_t array_size);
 
 //FUNCIÓN 5 
-void max_index(void *array, size_t data_type, size_t array_size);
+int max_index(void *array, data_type_t type, size_t array_size);
 
 //FUNCIÓN 6
-void min_index(void *array, size_t data_type, size_t array_size);
+int min_index(void *array, data_type_t type, size_t array_size);
 
 //FUNCIÓN 7
 matriz_t* matrix_sub(matriz_t A, matriz_t B);
