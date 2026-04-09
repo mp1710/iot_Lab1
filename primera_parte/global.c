@@ -146,15 +146,15 @@ int max_index(void *array, data_type_t type, size_t array_size) {
         int32_t max = *ptr;
         size_t max_index = 0;
 
-        int32_t *current = ptr + 1;
+        int32_t *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current > max) {
-                max = *current;
+            if (*actual > max) {
+                max = *actual;
                 max_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
         return (int)max_index;
@@ -164,15 +164,15 @@ int max_index(void *array, data_type_t type, size_t array_size) {
         float max = *ptr;
         size_t max_index = 0;
 
-        float *current = ptr + 1;
+        float *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current > max) {
-                max = *current;
+            if (*actual > max) {
+                max = *actual;
                 max_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -183,15 +183,15 @@ int max_index(void *array, data_type_t type, size_t array_size) {
         double max = *ptr;
         size_t max_index = 0;
 
-        double *current = ptr + 1;
+        double *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current > max) {
-                max = *current;
+            if (*actual > max) {
+                max = *actual;
                 max_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -202,15 +202,15 @@ int max_index(void *array, data_type_t type, size_t array_size) {
         int8_t max = *ptr;
         size_t max_index = 0;
 
-        int8_t *current = ptr + 1;
+        int8_t *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current > max) {
-                max = *current;
+            if (*actual > max) {
+                max = *actual;
                 max_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -241,15 +241,15 @@ int min_index(void *array, data_type_t type, size_t array_size) {
         int32_t min = *ptr;
         size_t min_index = 0;
 
-        int32_t *current = ptr + 1;
+        int32_t *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current < min) {
-                min = *current;
+            if (*actual < min) {
+                min = *actual;
                 min_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -260,15 +260,15 @@ int min_index(void *array, data_type_t type, size_t array_size) {
         float min = *ptr;
         size_t min_index = 0;
 
-        float *current = ptr + 1;
+        float *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current < min) {
-                min = *current;
+            if (*actual < min) {
+                min = *actual;
                 min_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -279,15 +279,15 @@ int min_index(void *array, data_type_t type, size_t array_size) {
         double min = *ptr;
         size_t min_index = 0;
 
-        double *current = ptr + 1;
+        double *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current < min) {
-                min = *current;
+            if (*actual < min) {
+                min = *actual;
                 min_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -298,15 +298,15 @@ int min_index(void *array, data_type_t type, size_t array_size) {
         int8_t min = *ptr;
         size_t min_index = 0;
 
-        int8_t *current = ptr + 1;
+        int8_t *actual = ptr + 1;
         size_t i = 1;
 
         while (i < array_size) {
-            if (*current < min) {
-                min = *current;
+            if (*actual < min) {
+                min = *actual;
                 min_index = i;
             }
-            current++;
+            actual++;
             i++;
         }
 
@@ -321,7 +321,7 @@ int min_index(void *array, data_type_t type, size_t array_size) {
 // Recibe dos matrices A y B, que son estructuras que contienen un puntero a una matriz de valores, 
 // el numero de filas y el numero de columnas.
 // Retorna un puntero a una nueva matriz C con el resultado de la resta, 
-//o NULL si hay un error en la reserva de memoria.
+// o NULL si hay un error en la reserva de memoria.
 // Tiene una limitacion y es que A y B deben tener las mismas dimensiones para poder realizar la resta,
 // si no se retorna una matriz con data = NULL, rows = 0 y cols = 0.
 matriz_t* matrix_sub(matriz_t A, matriz_t B) {
@@ -413,7 +413,7 @@ int consonantes(char *string) {
     return num_consonantes;
 }
 
-// Cuenta la cantidad de vocales en un string.
+// Esta funcion cuenta la cantidad de vocales en un string.
 // Recibe un puntero a char (string).
 // Retorna un int con la cantidad de vocales encontradas.
 int vocales(char *string) {
