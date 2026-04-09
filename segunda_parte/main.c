@@ -9,6 +9,7 @@ int main() {
     agregar_estudiante(&cabeza, "Maria", "Gomez", 11223344, 9, 92.3);
     agregar_estudiante(&cabeza, "Nicolas", "Aguerre", 18827641, 9, 45.3);
     agregar_estudiante(&cabeza, "Pilar", "Martinez", 12345678, 10, 88.0);
+    agregar_estudiante(&cabeza, "Horacio", "Torres", 99887766, 12, 78.9);
     printf("\n");
     printf("Lista de estudiantes:\n");
     mostrar_lista(cabeza);
